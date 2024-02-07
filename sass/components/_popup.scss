@@ -1,0 +1,115 @@
+.popup{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, 0.8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s .2s;
+
+    &__content{
+        width: 75%;
+        background-color: $color-white;
+        border-radius: 2px;
+        display: table;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.35);
+        transition: all .4s .2s;
+        @include response(phone){
+            width: 95%;
+            border-radius: 2px;
+            overflow: hidden;
+            display: inline-block;
+        }
+    }
+
+    &__left{
+        display: table-cell;
+        width: 33.33333%;
+        @include response(phone){   
+            visibility: hidden;
+            display: none;
+        }
+    }
+    &__right{
+        display: table-cell;
+        width: 66.66667;
+        vertical-align: middle;
+        padding: 2rem 6rem;
+        @include response(phone){
+            width: 100%;
+            display: block;
+            padding: 2rem 2rem;
+            &:first-child{
+                width: auto;
+                height: 100%;
+            }
+        }
+    }
+    &__img{
+        display: block;
+        width: 100%;
+        @include response(phone){
+            display: table-cell;
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            &:first-child{
+                float:left;
+            }
+        }
+    }
+    &__text{
+        font-size: 1.4rem;
+        column-count: 2;
+        column-gap: 2rem;
+        column-rule: 2px solid $color-light-grey2;
+
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+
+        @include response(phone){
+            column-count: 1;
+            column-gap: 0;
+            column-rule: 0;
+        }
+    }
+
+    &:target{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    &__close{
+        &:link,
+        &:visited{
+            font-size: 3rem;
+            color: $color-dark-grey-1;
+            text-decoration: none;
+            line-height: none;
+            position: absolute;
+            display: inline-block;
+            top: 2.5rem;
+            right: 2.5rem;
+            transition: all .2s;
+            @include response(phone){
+                font-weight: 700;
+                font-size: 3.5rem;
+            }
+        }
+        &:hover{
+            color: $color-medium;
+            transform: scale(1.1);
+        }
+    }
+
+}
